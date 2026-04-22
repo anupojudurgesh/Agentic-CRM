@@ -35,7 +35,7 @@ function ChatPanel({ onActionComplete }: ChatPanelProps) {
 
     try {
       const res = await axios.post<ChatResponse>(
-        "http://127.0.0.1:8000/chat",
+        `${import.meta.env.VITE_BACKEND_URL}/chat`,
         { message: trimmedMessage }
       )
 

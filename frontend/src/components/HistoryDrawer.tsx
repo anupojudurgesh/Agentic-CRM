@@ -15,7 +15,7 @@ function HistoryDrawer({ isOpen, onClose, onSelect }: HistoryDrawerProps) {
   const fetchInteractions = async () => {
     setLoading(true);
     try {
-      const res = await axios.get("http://127.0.0.1:8000/interactions");
+      const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/interactions`);
       setInteractions(res.data.interactions || []);
     } catch (err) {
       console.error("Failed to fetch interactions", err);
@@ -33,7 +33,7 @@ function HistoryDrawer({ isOpen, onClose, onSelect }: HistoryDrawerProps) {
   const handleDeleteAll = async () => {
     if (window.confirm("Are you sure you want to delete all interaction history? This cannot be undone.")) {
       try {
-        await axios.delete("http://127.0.0.1:8000/interactions");
+        await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/interactions`);
         setInteractions([]);
       } catch (err) {
         console.error("Failed to delete history", err);

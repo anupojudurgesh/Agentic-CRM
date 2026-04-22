@@ -17,7 +17,7 @@ function App() {
     if (isStarted) {
       const fetchLatestInteraction = async () => {
         try {
-          const res = await axios.get("http://127.0.0.1:8000/interactions/latest")
+          const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/interactions/latest`)
           if (res.data && res.data.interaction) {
             dispatch(updateForm(res.data.interaction as unknown as Partial<FormData>))
           }
