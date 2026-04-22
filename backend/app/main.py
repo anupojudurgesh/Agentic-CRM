@@ -1,0 +1,25 @@
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from app.api.routes import router
+from app.db.database import init_db
+
+app = FastAPI(title="AI CRM Backend")
+
+# Initialize DB on startup
+@app.on_event("startup")
+def startup_event():
+    init_db()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+app.include_router(router)
+
+@app.get("/")
+def health_check():
+    return {"status": "Backend is running"}

@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+psycopg
+psycopg-binary
+langgraph
+langchain-groq
+pydantic
+pydantic-settings
+python-dotenv
