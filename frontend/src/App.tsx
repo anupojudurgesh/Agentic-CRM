@@ -19,7 +19,7 @@ function App() {
         try {
           const res = await axios.get("http://127.0.0.1:8000/interactions/latest")
           if (res.data && res.data.interaction) {
-            dispatch(updateForm(res.data.interaction))
+            dispatch(updateForm(res.data.interaction as unknown as Partial<FormData>))
           }
         } catch (err) {
           console.error("Failed to fetch latest interaction:", err)
@@ -30,7 +30,7 @@ function App() {
   }, [dispatch, isStarted])
 
   const handleSelectHistory = (interaction: InteractionResponse) => {
-    dispatch(updateForm(interaction))
+    dispatch(updateForm(interaction as unknown as Partial<FormData>))
   }
 
   if (!isStarted) {
