@@ -6,7 +6,7 @@ import Form from "./components/Form"
 import LandingPage from "./components/LandingPage"
 import HistoryDrawer from "./components/HistoryDrawer"
 import { updateForm } from "./store/formSlice"
-import type { InteractionResponse } from "./types/types"
+import type { InteractionResponse, FormData } from "./types/types"
 
 function App() {
   const [isStarted, setIsStarted] = useState(false)
